@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Rock Paper Scissor</title>
+
+  </head>
+
+<body></body>
+
+<script>
+
+let userScore = 0;
+let compScore = 0;
+let winMsg = "You Won!";
+let loseMsg = "You lost to Computer!";
+let drawMsg = "It's a draw!"
+
+function computerPlay(){
+  let compChoice = Math.floor(Math.random()*3);
+  switch(compChoice){
+    case 0: return "rock";
+    break;
+    case 1: return "paper";
+    break;
+    case 2: return "scissor";
+    break;
+  }
+}
+
+function result(playerSelection,computerSelection){
+  while(playerSelection==="rock"){
+    if(computerSelection==="paper"){
+      compScore++;
+      return `Your score: ${userScore}   Computer's score: ${compScore}`;
+    }
+    else if(computerSelection==="scissor"){
+      userScore++;
+      return `Your score: ${userScore}   Computer's score: ${compScore}`;
+    }else{
+      return `Your score: ${userScore}   Computer's score: ${compScore}`;
+    }
+  }
+  while(playerSelection==="paper"){
+    if(computerSelection==="rock"){
+      userScore++;
+      return `Your score: ${userScore}   Computer's score: ${compScore}`;
+    }
+    else if(computerSelection==="scissor"){
+      compScore++;
+      return `Your score: ${userScore}   Computer's score: ${compScore}`;
+    }else{
+      return `Your score: ${userScore}   Computer's score: ${compScore}`;
+    }
+  }
+  while(playerSelection==="scissor"){
+    if(computerSelection==="paper"){
+      userScore++;
+      return `Your score: ${userScore}   Computer's score: ${compScore}`;
+    }
+    else if(computerSelection==="rock"){
+      compScore++;
+      return `Your score: ${userScore}   Computer's score: ${compScore}`;
+    }else{
+      return `Your score: ${userScore}   Computer's score: ${compScore}`;
+    }
+  }
+
+}
+
+
+function game(){
+  for(let i=0;i<5;i++){
+    let computerSelection = computerPlay();
+    // let playerSelection = userInput();
+    // function userInput(){
+    //   playerSelection = prompt("Rock or Paper or Scissor?","");
+    //   if(playerSelection==null){
+    //     userInput();
+    //   }
+    // }
+    let playerSelection = prompt("Rock or Paper or Scissor?","");
+    console.log(`Your Selection: ${playerSelection.toUpperCase()} Computer Selection: ${computerSelection.toUpperCase()}
+    ${result(playerSelection.toLowerCase(),computerSelection)}`);
+  }
+  if(userScore>compScore){
+    return winMsg;
+  }else if(userScore<compScore){
+    return loseMsg;
+  }else{
+    return drawMsg;
+  }
+}
+
+console.log(game());
+
+</script>
+</html>
